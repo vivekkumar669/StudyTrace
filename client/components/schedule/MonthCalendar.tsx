@@ -45,8 +45,8 @@ export default function MonthCalendar({
       </h3>
 
       <div className="mb-3 grid grid-cols-7 gap-1 text-center">
-        {weekDays.map((day) => (
-          <div key={day} className="text-xs font-medium text-muted-foreground py-1">
+        {weekDays.map((day, index) => (
+          <div key={index} className="text-xs font-medium text-muted-foreground py-1">
             {day}
           </div>
         ))}
