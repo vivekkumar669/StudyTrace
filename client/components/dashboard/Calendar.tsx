@@ -34,8 +34,8 @@ export default function Calendar({ currentMonth }: CalendarProps) {
   return (
     <div>
       <div className="mb-4 grid grid-cols-7 gap-2 text-center">
-        {weekDays.map((day) => (
-          <div key={day} className="text-xs font-medium text-muted-foreground py-2">
+        {weekDays.map((day, index) => (
+          <div key={index} className="text-xs font-medium text-muted-foreground py-2">
             {day}
           </div>
         ))}
