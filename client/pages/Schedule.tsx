@@ -3,11 +3,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import MonthCalendar from "../components/schedule/MonthCalendar";
 import WeekView from "../components/schedule/WeekView";
 
-interface ScheduleProps {
-  setActiveTab?: () => void;
-}
-
-export default function Schedule({ setActiveTab }: ScheduleProps) {
+export default function Schedule() {
   const [startMonth, setStartMonth] = useState(new Date(2025, 4)); // May 2025
   const [viewMode, setViewMode] = useState<"months" | "week">("months");
   const [selectedWeek, setSelectedWeek] = useState(
