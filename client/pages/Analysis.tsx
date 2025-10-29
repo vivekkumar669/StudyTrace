@@ -1,8 +1,4 @@
-interface AnalysisProps {
-  setActiveTab?: () => void;
-}
-
-export default function Analysis({ setActiveTab }: AnalysisProps) {
+export default function Analysis() {
   return (
     <div className="min-h-96 flex items-center justify-center">
       <div className="text-center">
