@@ -1,11 +1,7 @@
 import { useState } from "react";
-import { ChevronLeft, ChevronRight, Play, Plus, Edit } from "lucide-react";
-import StatCard from "../components/dashboard/StatCard";
-import PlannedActivitiesChart from "../components/dashboard/PlannedActivitiesChart";
-import WeeklyTrendChart from "../components/dashboard/WeeklyTrendChart";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import Calendar from "../components/dashboard/Calendar";
 import StudySessionCard from "../components/dashboard/StudySessionCard";
-import StudyStatistics from "../components/dashboard/StudyStatistics";
 import StudyGoal from "../components/dashboard/StudyGoal";
 import TodaysActivities from "../components/dashboard/TodaysActivities";
 import UpcomingEvents from "../components/dashboard/UpcomingEvents";
@@ -15,46 +11,8 @@ export default function Dashboard() {
 
   return (
     <div className="space-y-8">
-      {/* Stat Cards */}
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
-        <StatCard
-          icon="📚"
-          label="Hours Studied"
-          value="0.1h"
-          subtitle="1 session"
-        />
-        <StatCard
-          icon="⏱️"
-          label="Average per Session"
-          value="0.1h"
-          subtitle="average duration"
-        />
-        <StatCard
-          icon="✓"
-          label="Completion Rate"
-          value="33%"
-          subtitle="of goals"
-        />
-        <StatCard
-          icon="📝"
-          label="Planned Hours"
-          value="2.8h"
-          subtitle="in schedule"
-        />
-      </div>
-
-      {/* Charts and main content */}
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
-        {/* Left column - Charts */}
-        <div className="space-y-6 lg:col-span-2">
-          {/* Planned Activities */}
-          <PlannedActivitiesChart />
-
-          {/* Weekly Trend */}
-          <WeeklyTrendChart />
-        </div>
-
-        {/* Right column - Calendar and Stats */}
+        {/* Left column - Calendar */}
         <div className="space-y-6">
           {/* Calendar */}
           <div className="rounded-lg border border-border bg-card p-6">
@@ -91,27 +49,20 @@ export default function Dashboard() {
             <Calendar currentMonth={currentMonth} />
           </div>
 
-          {/* Study Statistics */}
-          <StudyStatistics />
-        </div>
-      </div>
-
-      {/* Bottom row - Study Session, Goal, Activities, Events */}
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-        {/* Left column */}
-        <div className="space-y-6">
-          {/* Study Session Card */}
-          <StudySessionCard />
-
           {/* Study Goal */}
           <StudyGoal />
         </div>
 
-        {/* Right column - Activities and Events */}
-        <div className="space-y-6">
+        {/* Right column - Study Session, Activities, Events */}
+        <div className="space-y-6 lg:col-span-2">
+          {/* Study Session Card */}
+          <StudySessionCard />
+
           {/* Split Today's Activities */}
-          <TodaysActivities type="skills" />
-          <TodaysActivities type="college" />
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            <TodaysActivities type="skills" />
+            <TodaysActivities type="college" />
+          </div>
 
           {/* Upcoming Events */}
           <UpcomingEvents />
