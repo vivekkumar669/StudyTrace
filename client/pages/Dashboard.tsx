@@ -10,11 +10,7 @@ import StudyGoal from "../components/dashboard/StudyGoal";
 import TodaysActivities from "../components/dashboard/TodaysActivities";
 import UpcomingEvents from "../components/dashboard/UpcomingEvents";
 
-interface DashboardProps {
-  setActiveTab?: () => void;
-}
-
-export default function Dashboard({ setActiveTab }: DashboardProps) {
+export default function Dashboard() {
   const [currentMonth, setCurrentMonth] = useState(new Date(2025, 9)); // October 2025
 
   return (
