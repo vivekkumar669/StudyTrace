@@ -7,9 +7,18 @@ import NotFound from "./pages/NotFound";
 import { Settings, RotateCcw, Moon, Sun } from "lucide-react";
 
 function AppContent() {
-  const [isDark, setIsDark] = useState(true);
+  const [isDark, setIsDark] = useState(() => {
+    // Initialize from document or default to true
+    return document.documentElement.classList.contains("dark");
+  });
   const location = useLocation();
   const navigate = useNavigate();
+
+  // Ensure dark class is applied on mount
+  useEffect(() => {
+    document.documentElement.classList.add("dark");
+    setIsDark(true);
+  }, []);
 
   const getActiveTab = () => {
     const path = location.pathname;
