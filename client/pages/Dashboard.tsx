@@ -7,7 +7,7 @@ import TodaysActivities from "../components/dashboard/TodaysActivities";
 import UpcomingEvents from "../components/dashboard/UpcomingEvents";
 
 export default function Dashboard() {
-  const [currentMonth, setCurrentMonth] = useState(new Date(2025, 9)); // October 2025
+  const [currentMonth, setCurrentMonth] = useState(new Date());
 
   return (
     <div className="space-y-4 sm:space-y-6 md:space-y-8">

@@ -22,6 +22,10 @@ export default function MonthCalendar({
   const [newEventTitle, setNewEventTitle] = useState("");
   const [editingEventId, setEditingEventId] = useState<number | null>(null);
   const [editingTitle, setEditingTitle] = useState("");
+  const todayDate = new Date().getDate();
+  const isCurrentMonth =
+    new Date().getFullYear() === month.getFullYear() &&
+    new Date().getMonth() === month.getMonth();
 
   // Load from localStorage on mount
   useEffect(() => {
@@ -132,7 +136,7 @@ export default function MonthCalendar({
                 className={`w-full aspect-square text-xs font-medium rounded transition-colors ${
                   day === null
                     ? "invisible"
-                    : day === 19
+                    : isCurrentMonth && day === todayDate
                     ? "bg-green-500 text-white"
                     : activityDays[day]
                     ? `bg-green-500/${activityDays[day] === "low" ? "30" : activityDays[day] === "medium" ? "60" : "80"} text-foreground border border-green-500/50`

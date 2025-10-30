@@ -5,7 +5,11 @@ interface CalendarProps {
 }
 
 export default function Calendar({ currentMonth }: CalendarProps) {
-  const [selectedDate, setSelectedDate] = useState(19); // October 19, 2025
+  const [selectedDate, setSelectedDate] = useState(new Date().getDate());
+  const todayDate = new Date().getDate();
+  const isCurrentMonth =
+    new Date().getFullYear() === currentMonth.getFullYear() &&
+    new Date().getMonth() === currentMonth.getMonth();
 
   const getDaysInMonth = (date: Date) => {
     return new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
@@ -51,7 +55,7 @@ export default function Calendar({ currentMonth }: CalendarProps) {
                 ? "invisible"
                 : day === selectedDate
                 ? "bg-green-500 text-white"
-                : day === 19
+                : isCurrentMonth && day === todayDate
                 ? "bg-green-500/20 text-green-400 border border-green-500/50"
                 : "text-foreground hover:bg-secondary"
             }`}
