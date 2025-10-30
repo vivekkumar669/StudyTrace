@@ -8,14 +8,14 @@ export default function Analysis() {
   const [activeTab, setActiveTab] = useState("week");
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-4 sm:space-y-6 md:space-y-8">
       <div>
-        <h1 className="text-3xl font-bold text-foreground mb-2">Analysis Dashboard</h1>
-        <p className="text-muted-foreground">Track your study statistics and progress</p>
+        <h1 className="text-2xl sm:text-3xl font-bold text-foreground mb-1 sm:mb-2">Analysis Dashboard</h1>
+        <p className="text-sm sm:text-base text-muted-foreground">Track your study statistics and progress</p>
       </div>
 
       {/* Stat Cards */}
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+      <div className="grid grid-cols-2 gap-2 sm:gap-3 md:gap-4 lg:grid-cols-4">
         <StatCard
           icon="📚"
           label="Hours Studied"
@@ -43,7 +43,7 @@ export default function Analysis() {
       </div>
 
       {/* Charts */}
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+      <div className="grid grid-cols-1 gap-4 sm:gap-6 lg:grid-cols-2">
         {/* Planned Activities */}
         <PlannedActivitiesChart />
 
@@ -55,10 +55,10 @@ export default function Analysis() {
       <StudyStatistics />
 
       {/* Goal Insights */}
-      <div className="rounded-lg border border-border bg-card p-6">
-        <h2 className="text-2xl font-bold text-foreground mb-6">Goal Insights</h2>
-        
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+      <div className="rounded-lg border border-border bg-card p-3 sm:p-4 md:p-6">
+        <h2 className="text-xl sm:text-2xl font-bold text-foreground mb-4 sm:mb-6">Goal Insights</h2>
+
+        <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2">
           {/* Goal Progress */}
           <div className="space-y-4">
             <h3 className="text-lg font-semibold text-foreground">Weekly Goal Progress</h3>
@@ -110,10 +110,10 @@ export default function Analysis() {
       </div>
 
       {/* Performance Summary */}
-      <div className="rounded-lg border border-border bg-card p-6">
-        <h2 className="text-2xl font-bold text-foreground mb-6">Performance Summary</h2>
-        
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="rounded-lg border border-border bg-card p-3 sm:p-4 md:p-6">
+        <h2 className="text-xl sm:text-2xl font-bold text-foreground mb-4 sm:mb-6">Performance Summary</h2>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4 md:gap-6">
           <div className="space-y-2">
             <p className="text-sm text-muted-foreground">Most Active Day</p>
             <p className="text-2xl font-bold text-green-500">Thursday</p>
