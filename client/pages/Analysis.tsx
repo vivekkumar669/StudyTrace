@@ -10,8 +10,12 @@ export default function Analysis() {
   return (
     <div className="space-y-4 sm:space-y-6 md:space-y-8">
       <div>
-        <h1 className="text-2xl sm:text-3xl font-bold text-foreground mb-1 sm:mb-2">Analysis Dashboard</h1>
-        <p className="text-sm sm:text-base text-muted-foreground">Track your study statistics and progress</p>
+        <h1 className="text-2xl sm:text-3xl font-bold text-foreground mb-1 sm:mb-2">
+          Analysis Dashboard
+        </h1>
+        <p className="text-sm sm:text-base text-muted-foreground">
+          Track your study statistics and progress
+        </p>
       </div>
 
       {/* Stat Cards */}
@@ -56,12 +60,16 @@ export default function Analysis() {
 
       {/* Goal Insights */}
       <div className="rounded-lg border border-border bg-card p-3 sm:p-4 md:p-6">
-        <h2 className="text-xl sm:text-2xl font-bold text-foreground mb-4 sm:mb-6">Goal Insights</h2>
+        <h2 className="text-xl sm:text-2xl font-bold text-foreground mb-4 sm:mb-6">
+          Goal Insights
+        </h2>
 
         <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2">
           {/* Goal Progress */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-foreground">Weekly Goal Progress</h3>
+            <h3 className="text-lg font-semibold text-foreground">
+              Weekly Goal Progress
+            </h3>
             <div className="rounded-lg bg-secondary/30 p-6">
               <p className="text-3xl font-bold text-green-500 mb-2">5 min</p>
               <p className="text-sm text-muted-foreground mb-4">
@@ -81,7 +89,9 @@ export default function Analysis() {
 
           {/* Study Streak */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-foreground">Study Streak</h3>
+            <h3 className="text-lg font-semibold text-foreground">
+              Study Streak
+            </h3>
             <div className="rounded-lg bg-secondary/30 p-6">
               <p className="text-3xl font-bold text-blue-500 mb-2">1 day</p>
               <p className="text-sm text-muted-foreground mb-4">
@@ -95,12 +105,10 @@ export default function Analysis() {
                       i === 0
                         ? "bg-green-500"
                         : i === 6
-                        ? "bg-green-500/30"
-                        : "bg-secondary"
+                          ? "bg-green-500/30"
+                          : "bg-secondary"
                     }`}
-                    title={
-                      ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"][i]
-                    }
+                    title={["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"][i]}
                   />
                 ))}
               </div>
@@ -111,7 +119,9 @@ export default function Analysis() {
 
       {/* Performance Summary */}
       <div className="rounded-lg border border-border bg-card p-3 sm:p-4 md:p-6">
-        <h2 className="text-xl sm:text-2xl font-bold text-foreground mb-4 sm:mb-6">Performance Summary</h2>
+        <h2 className="text-xl sm:text-2xl font-bold text-foreground mb-4 sm:mb-6">
+          Performance Summary
+        </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4 md:gap-6">
           <div className="space-y-2">

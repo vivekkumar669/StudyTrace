@@ -51,8 +51,8 @@ export default function TodaysActivities({ type }: TodaysActivitiesProps) {
   const handleToggleActivity = (id: number) => {
     setActivities(
       activities.map((a) =>
-        a.id === id ? { ...a, completed: !a.completed } : a
-      )
+        a.id === id ? { ...a, completed: !a.completed } : a,
+      ),
     );
   };
 
@@ -66,7 +66,9 @@ export default function TodaysActivities({ type }: TodaysActivitiesProps) {
   return (
     <div className="rounded-lg border border-border bg-card p-3 sm:p-4 md:p-6">
       <div className="mb-3 sm:mb-4 flex items-center justify-between gap-2">
-        <h3 className="text-sm sm:text-base font-semibold text-foreground truncate">{title}</h3>
+        <h3 className="text-sm sm:text-base font-semibold text-foreground truncate">
+          {title}
+        </h3>
         <span className="text-xs text-muted-foreground whitespace-nowrap">
           {completedCount}/{totalCount}
         </span>
@@ -91,7 +93,9 @@ export default function TodaysActivities({ type }: TodaysActivitiesProps) {
                     : "border-muted-foreground hover:border-green-500"
                 }`}
               >
-                {activity.completed && <Check size={12} className="sm:w-3.5 sm:h-3.5 text-white" />}
+                {activity.completed && (
+                  <Check size={12} className="sm:w-3.5 sm:h-3.5 text-white" />
+                )}
               </button>
               <span
                 className={`flex-1 text-xs sm:text-sm transition-colors truncate ${
@@ -106,7 +110,10 @@ export default function TodaysActivities({ type }: TodaysActivitiesProps) {
                 onClick={() => handleRemoveActivity(activity.id)}
                 className="p-1 opacity-0 group-hover:opacity-100 transition-opacity hover:bg-secondary rounded flex-shrink-0"
               >
-                <Trash2 size={12} className="sm:w-3.5 sm:h-3.5 text-muted-foreground" />
+                <Trash2
+                  size={12}
+                  className="sm:w-3.5 sm:h-3.5 text-muted-foreground"
+                />
               </button>
             </div>
           ))

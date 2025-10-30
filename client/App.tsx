@@ -1,4 +1,10 @@
-import { BrowserRouter, Routes, Route, useLocation, useNavigate } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 import { useState, useEffect } from "react";
 import Dashboard from "./pages/Dashboard";
 import Schedule from "./pages/Schedule";
@@ -54,7 +60,9 @@ function AppContent() {
               }}
             >
               <div className="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-lg bg-green-500 flex-shrink-0">
-                <span className="text-base sm:text-lg font-bold text-white">✓</span>
+                <span className="text-base sm:text-lg font-bold text-white">
+                  ✓
+                </span>
               </div>
               <div className="hidden sm:block">
                 <h1 className="text-lg sm:text-xl font-bold text-foreground leading-tight">

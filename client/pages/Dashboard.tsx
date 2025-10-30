@@ -27,7 +27,10 @@ export default function Dashboard() {
                 <button
                   onClick={() =>
                     setCurrentMonth(
-                      new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1)
+                      new Date(
+                        currentMonth.getFullYear(),
+                        currentMonth.getMonth() - 1,
+                      ),
                     )
                   }
                   className="p-1.5 sm:p-2 hover:bg-secondary rounded transition-colors"
@@ -38,7 +41,10 @@ export default function Dashboard() {
                 <button
                   onClick={() =>
                     setCurrentMonth(
-                      new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1)
+                      new Date(
+                        currentMonth.getFullYear(),
+                        currentMonth.getMonth() + 1,
+                      ),
                     )
                   }
                   className="p-1.5 sm:p-2 hover:bg-secondary rounded transition-colors"

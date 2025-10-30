@@ -7,14 +7,14 @@ export default function Schedule() {
   const [startMonth, setStartMonth] = useState(new Date(2025, 4)); // May 2025
   const [viewMode, setViewMode] = useState<"months" | "week">("months");
   const [selectedWeek, setSelectedWeek] = useState(
-    new Date(2025, 9, 13) // October 13, 2025
+    new Date(2025, 9, 13), // October 13, 2025
   );
 
   const getMonthsToDisplay = () => {
     const months = [];
     for (let i = 0; i < 4; i++) {
       months.push(
-        new Date(startMonth.getFullYear(), startMonth.getMonth() + i)
+        new Date(startMonth.getFullYear(), startMonth.getMonth() + i),
       );
     }
     return months;
@@ -24,7 +24,9 @@ export default function Schedule() {
     <div className="space-y-4 sm:space-y-6">
       {/* View toggle */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-0">
-        <h2 className="text-xl sm:text-2xl font-bold text-foreground">Schedule</h2>
+        <h2 className="text-xl sm:text-2xl font-bold text-foreground">
+          Schedule
+        </h2>
         <div className="flex gap-1 sm:gap-2 w-full sm:w-auto">
           <button
             onClick={() => setViewMode("months")}
@@ -56,7 +58,7 @@ export default function Schedule() {
             <button
               onClick={() =>
                 setStartMonth(
-                  new Date(startMonth.getFullYear(), startMonth.getMonth() - 1)
+                  new Date(startMonth.getFullYear(), startMonth.getMonth() - 1),
                 )
               }
               className="p-1.5 sm:p-2 hover:bg-secondary rounded-lg transition-colors flex-shrink-0"
@@ -72,7 +74,7 @@ export default function Schedule() {
                 -{" "}
                 {new Date(
                   startMonth.getFullYear(),
-                  startMonth.getMonth() + 3
+                  startMonth.getMonth() + 3,
                 ).toLocaleDateString("en-US", {
                   month: "long",
                   year: "numeric",
@@ -88,7 +90,7 @@ export default function Schedule() {
             <button
               onClick={() =>
                 setStartMonth(
-                  new Date(startMonth.getFullYear(), startMonth.getMonth() + 1)
+                  new Date(startMonth.getFullYear(), startMonth.getMonth() + 1),
                 )
               }
               className="p-1.5 sm:p-2 hover:bg-secondary rounded-lg transition-colors flex-shrink-0"
@@ -104,7 +106,9 @@ export default function Schedule() {
                 key={index}
                 month={month}
                 onSelectMonth={() => {
-                  setSelectedWeek(new Date(month.getFullYear(), month.getMonth(), 1));
+                  setSelectedWeek(
+                    new Date(month.getFullYear(), month.getMonth(), 1),
+                  );
                   setViewMode("week");
                 }}
               />

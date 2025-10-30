@@ -52,13 +52,17 @@ export default function StudyGoal() {
   return (
     <div className="rounded-lg border border-border bg-card p-3 sm:p-4 md:p-6">
       <div className="mb-3 sm:mb-4 flex items-center justify-between gap-2">
-        <h3 className="text-base sm:text-lg font-semibold text-foreground">Study Goal</h3>
+        <h3 className="text-base sm:text-lg font-semibold text-foreground">
+          Study Goal
+        </h3>
         <span className="text-xs text-muted-foreground">Weekly</span>
       </div>
 
       {isEditing ? (
         <div className="mb-4 sm:mb-6 space-y-2 sm:space-y-3">
-          <label className="text-xs sm:text-sm text-muted-foreground">Goal (minutes)</label>
+          <label className="text-xs sm:text-sm text-muted-foreground">
+            Goal (minutes)
+          </label>
           <div className="flex gap-2">
             <input
               type="number"
@@ -129,7 +133,9 @@ export default function StudyGoal() {
         >
           <span
             className={`inline-block h-4 sm:h-5 w-4 sm:w-5 transform rounded-full bg-white transition-transform ${
-              showInChart ? "translate-x-4 sm:translate-x-5" : "translate-x-0.5 sm:translate-x-1"
+              showInChart
+                ? "translate-x-4 sm:translate-x-5"
+                : "translate-x-0.5 sm:translate-x-1"
             }`}
           />
         </button>

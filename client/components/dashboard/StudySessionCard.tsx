@@ -40,12 +40,17 @@ export default function StudySessionCard() {
 
   return (
     <div className="rounded-lg border border-border bg-card p-3 sm:p-4 md:p-6">
-      <h3 className="mb-3 sm:mb-4 md:mb-6 text-base sm:text-lg font-semibold text-foreground">Study Session</h3>
+      <h3 className="mb-3 sm:mb-4 md:mb-6 text-base sm:text-lg font-semibold text-foreground">
+        Study Session
+      </h3>
 
       {/* Timer display */}
       <div className="mb-4 sm:mb-6 text-center">
         <div className="relative w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 mx-auto mb-3 sm:mb-4">
-          <svg className="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
+          <svg
+            className="w-full h-full transform -rotate-90"
+            viewBox="0 0 100 100"
+          >
             <circle
               cx="50"
               cy="50"
@@ -115,12 +120,17 @@ export default function StudySessionCard() {
           </label>
           <button className="w-full flex items-center justify-between rounded-lg bg-secondary p-2 sm:p-3 text-foreground hover:bg-secondary/80 transition-colors">
             <span className="text-xs sm:text-sm truncate">{activity}</span>
-            <ChevronDown size={14} className="sm:w-4 sm:h-4 flex-shrink-0 ml-2" />
+            <ChevronDown
+              size={14}
+              className="sm:w-4 sm:h-4 flex-shrink-0 ml-2"
+            />
           </button>
         </div>
 
         <div className="flex items-center justify-between">
-          <label className="text-xs sm:text-sm text-muted-foreground">Add to schedule</label>
+          <label className="text-xs sm:text-sm text-muted-foreground">
+            Add to schedule
+          </label>
           <button
             onClick={() => setIsEnabled(!isEnabled)}
             className={`relative inline-flex h-5 sm:h-6 w-9 sm:w-11 rounded-full transition-colors flex-shrink-0 ${
@@ -129,7 +139,9 @@ export default function StudySessionCard() {
           >
             <span
               className={`inline-block h-4 sm:h-5 w-4 sm:w-5 transform rounded-full bg-white transition-transform ${
-                isEnabled ? "translate-x-4 sm:translate-x-5" : "translate-x-0.5 sm:translate-x-1"
+                isEnabled
+                  ? "translate-x-4 sm:translate-x-5"
+                  : "translate-x-0.5 sm:translate-x-1"
               }`}
             />
           </button>

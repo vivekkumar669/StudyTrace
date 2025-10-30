@@ -52,11 +52,14 @@ export default function UpcomingEvents() {
   };
 
   const handleSaveEdit = () => {
-    if (editEvent.title.trim() && editEvent.date && editEvent.time && editingId) {
+    if (
+      editEvent.title.trim() &&
+      editEvent.date &&
+      editEvent.time &&
+      editingId
+    ) {
       setEvents(
-        events.map((e) =>
-          e.id === editingId ? { ...e, ...editEvent } : e
-        )
+        events.map((e) => (e.id === editingId ? { ...e, ...editEvent } : e)),
       );
       setEditingId(null);
       setEditEvent({ title: "", date: "", time: "" });
@@ -208,8 +211,9 @@ export default function UpcomingEvents() {
                     <p className="text-xs text-muted-foreground">
                       {new Date(event.date).toLocaleDateString("en-US", {
                         month: "short",
-                        day: "numeric"
-                      })} at {event.time}
+                        day: "numeric",
+                      })}{" "}
+                      at {event.time}
                     </p>
                   </div>
                   <div className="flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0">
@@ -217,13 +221,19 @@ export default function UpcomingEvents() {
                       onClick={() => handleStartEdit(event)}
                       className="p-1 sm:p-1.5 rounded hover:bg-secondary"
                     >
-                      <Edit2 size={12} className="sm:w-3.5 sm:h-3.5 text-muted-foreground" />
+                      <Edit2
+                        size={12}
+                        className="sm:w-3.5 sm:h-3.5 text-muted-foreground"
+                      />
                     </button>
                     <button
                       onClick={() => handleDeleteEvent(event.id)}
                       className="p-1 sm:p-1.5 rounded hover:bg-secondary"
                     >
-                      <Trash2 size={12} className="sm:w-3.5 sm:h-3.5 text-muted-foreground" />
+                      <Trash2
+                        size={12}
+                        className="sm:w-3.5 sm:h-3.5 text-muted-foreground"
+                      />
                     </button>
                   </div>
                 </div>
