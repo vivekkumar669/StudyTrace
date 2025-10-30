@@ -39,12 +39,12 @@ export default function StudySessionCard() {
   const progress = ((3.5 * 60 * 60 - timeLeft) / (3.5 * 60 * 60)) * 100;
 
   return (
-    <div className="rounded-lg border border-border bg-card p-6">
-      <h3 className="mb-6 text-lg font-semibold text-foreground">Study Session</h3>
+    <div className="rounded-lg border border-border bg-card p-3 sm:p-4 md:p-6">
+      <h3 className="mb-3 sm:mb-4 md:mb-6 text-base sm:text-lg font-semibold text-foreground">Study Session</h3>
 
       {/* Timer display */}
-      <div className="mb-6 text-center">
-        <div className="relative w-32 h-32 mx-auto mb-4">
+      <div className="mb-4 sm:mb-6 text-center">
+        <div className="relative w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 mx-auto mb-3 sm:mb-4">
           <svg className="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
             <circle
               cx="50"
@@ -68,7 +68,7 @@ export default function StudySessionCard() {
           </svg>
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="text-center">
-              <div className="text-3xl font-bold text-green-500">
+              <div className="text-lg sm:text-2xl md:text-3xl font-bold text-green-500">
                 {formatTime(timeLeft)}
               </div>
               <div className="text-xs text-muted-foreground">remaining</div>
@@ -78,55 +78,58 @@ export default function StudySessionCard() {
       </div>
 
       {/* Controls */}
-      <div className="flex gap-2 justify-center mb-6">
+      <div className="flex gap-2 justify-center mb-4 sm:mb-6 flex-wrap">
         <button
           onClick={handleStartPause}
-          className="flex items-center gap-2 rounded-lg bg-green-500 px-4 py-2 text-white font-medium hover:bg-green-600 transition-colors"
+          className="flex items-center gap-1 sm:gap-2 rounded-lg bg-green-500 px-3 sm:px-4 py-2 text-white text-xs sm:text-sm font-medium hover:bg-green-600 transition-colors whitespace-nowrap"
         >
           {isRunning ? (
             <>
-              <Pause size={16} fill="currentColor" />
-              Pause
+              <Pause size={14} fill="currentColor" className="sm:w-4 sm:h-4" />
+              <span className="hidden sm:inline">Pause</span>
+              <span className="sm:hidden">Pause</span>
             </>
           ) : (
             <>
-              <Play size={16} fill="currentColor" />
-              Start
+              <Play size={14} fill="currentColor" className="sm:w-4 sm:h-4" />
+              <span className="hidden sm:inline">Start</span>
+              <span className="sm:hidden">Start</span>
             </>
           )}
         </button>
         <button
           onClick={handleReset}
-          className="flex items-center gap-2 rounded-lg bg-secondary px-4 py-2 text-foreground font-medium hover:bg-secondary/80 transition-colors"
+          className="flex items-center gap-1 sm:gap-2 rounded-lg bg-secondary px-3 sm:px-4 py-2 text-foreground text-xs sm:text-sm font-medium hover:bg-secondary/80 transition-colors whitespace-nowrap"
         >
-          <RotateCcw size={16} />
-          Reset
+          <RotateCcw size={14} className="sm:w-4 sm:h-4" />
+          <span className="hidden sm:inline">Reset</span>
+          <span className="sm:hidden">Reset</span>
         </button>
       </div>
 
       {/* Activity selector */}
-      <div className="space-y-4">
+      <div className="space-y-3 sm:space-y-4">
         <div>
-          <label className="text-sm text-muted-foreground block mb-2">
+          <label className="text-xs sm:text-sm text-muted-foreground block mb-1 sm:mb-2">
             Activity
           </label>
-          <button className="w-full flex items-center justify-between rounded-lg bg-secondary p-3 text-foreground hover:bg-secondary/80 transition-colors">
-            <span className="text-sm">{activity}</span>
-            <ChevronDown size={16} />
+          <button className="w-full flex items-center justify-between rounded-lg bg-secondary p-2 sm:p-3 text-foreground hover:bg-secondary/80 transition-colors">
+            <span className="text-xs sm:text-sm truncate">{activity}</span>
+            <ChevronDown size={14} className="sm:w-4 sm:h-4 flex-shrink-0 ml-2" />
           </button>
         </div>
 
         <div className="flex items-center justify-between">
-          <label className="text-sm text-muted-foreground">Add to schedule</label>
+          <label className="text-xs sm:text-sm text-muted-foreground">Add to schedule</label>
           <button
             onClick={() => setIsEnabled(!isEnabled)}
-            className={`relative inline-flex h-6 w-11 rounded-full transition-colors ${
+            className={`relative inline-flex h-5 sm:h-6 w-9 sm:w-11 rounded-full transition-colors flex-shrink-0 ${
               isEnabled ? "bg-green-500" : "bg-secondary"
             }`}
           >
             <span
-              className={`inline-block h-5 w-5 transform rounded-full bg-white transition-transform ${
-                isEnabled ? "translate-x-5" : "translate-x-1"
+              className={`inline-block h-4 sm:h-5 w-4 sm:w-5 transform rounded-full bg-white transition-transform ${
+                isEnabled ? "translate-x-4 sm:translate-x-5" : "translate-x-0.5 sm:translate-x-1"
               }`}
             />
           </button>
