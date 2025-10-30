@@ -66,8 +66,7 @@ export default function MonthCalendar({
 
   const weekDays = ["S", "M", "T", "W", "T", "F", "S"];
 
-  const getDayEvents = (day: number) =>
-    events.filter((e) => e.date === day);
+  const getDayEvents = (day: number) => events.filter((e) => e.date === day);
 
   const handleAddEvent = (day: number) => {
     if (newEventTitle.trim()) {
@@ -93,8 +92,8 @@ export default function MonthCalendar({
     if (editingEventId && editingTitle.trim()) {
       setEvents(
         events.map((e) =>
-          e.id === editingEventId ? { ...e, title: editingTitle } : e
-        )
+          e.id === editingEventId ? { ...e, title: editingTitle } : e,
+        ),
       );
       setEditingEventId(null);
       setEditingTitle("");
@@ -132,15 +131,17 @@ export default function MonthCalendar({
           return (
             <div key={index}>
               <button
-                onClick={() => day && setSelectedDate(day === selectedDate ? null : day)}
+                onClick={() =>
+                  day && setSelectedDate(day === selectedDate ? null : day)
+                }
                 className={`w-full aspect-square text-xs font-medium rounded transition-colors ${
                   day === null
                     ? "invisible"
                     : isCurrentMonth && day === todayDate
-                    ? "bg-green-500 text-white"
-                    : activityDays[day]
-                    ? `bg-green-500/${activityDays[day] === "low" ? "30" : activityDays[day] === "medium" ? "60" : "80"} text-foreground border border-green-500/50`
-                    : "text-foreground hover:bg-secondary"
+                      ? "bg-green-500 text-white"
+                      : activityDays[day]
+                        ? `bg-green-500/${activityDays[day] === "low" ? "30" : activityDays[day] === "medium" ? "60" : "80"} text-foreground border border-green-500/50`
+                        : "text-foreground hover:bg-secondary"
                 }`}
               >
                 {day}
@@ -159,7 +160,9 @@ export default function MonthCalendar({
       {selectedDate && (
         <div className="border-t border-border pt-4 space-y-3">
           <h4 className="text-sm font-semibold text-foreground">
-            Events on {month.getFullYear()}-{String(month.getMonth() + 1).padStart(2, "0")}-{String(selectedDate).padStart(2, "0")}
+            Events on {month.getFullYear()}-
+            {String(month.getMonth() + 1).padStart(2, "0")}-
+            {String(selectedDate).padStart(2, "0")}
           </h4>
 
           {/* Add new event */}
@@ -211,7 +214,9 @@ export default function MonthCalendar({
                   key={event.id}
                   className="flex items-center justify-between p-2 rounded-lg bg-secondary/50 hover:bg-secondary transition-colors group"
                 >
-                  <p className="text-xs text-foreground flex-1">{event.title}</p>
+                  <p className="text-xs text-foreground flex-1">
+                    {event.title}
+                  </p>
                   <div className="flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
                     <button
                       onClick={() => handleStartEdit(event.id, event.title)}
@@ -227,7 +232,7 @@ export default function MonthCalendar({
                     </button>
                   </div>
                 </div>
-              )
+              ),
             )}
           </div>
         </div>

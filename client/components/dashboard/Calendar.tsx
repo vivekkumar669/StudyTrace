@@ -39,7 +39,10 @@ export default function Calendar({ currentMonth }: CalendarProps) {
     <div>
       <div className="mb-4 grid grid-cols-7 gap-2 text-center">
         {weekDays.map((day, index) => (
-          <div key={index} className="text-xs font-medium text-muted-foreground py-2">
+          <div
+            key={index}
+            className="text-xs font-medium text-muted-foreground py-2"
+          >
             {day}
           </div>
         ))}
@@ -54,10 +57,10 @@ export default function Calendar({ currentMonth }: CalendarProps) {
               day === null
                 ? "invisible"
                 : day === selectedDate
-                ? "bg-green-500 text-white"
-                : isCurrentMonth && day === todayDate
-                ? "bg-green-500/20 text-green-400 border border-green-500/50"
-                : "text-foreground hover:bg-secondary"
+                  ? "bg-green-500 text-white"
+                  : isCurrentMonth && day === todayDate
+                    ? "bg-green-500/20 text-green-400 border border-green-500/50"
+                    : "text-foreground hover:bg-secondary"
             }`}
           >
             {day}
