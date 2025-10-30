@@ -80,22 +80,22 @@ export default function UpcomingEvents() {
   });
 
   return (
-    <div className="rounded-lg border border-border bg-card p-6">
-      <div className="mb-4 flex items-center justify-between">
-        <h3 className="text-base font-semibold text-foreground">
+    <div className="rounded-lg border border-border bg-card p-3 sm:p-4 md:p-6">
+      <div className="mb-3 sm:mb-4 flex items-center justify-between gap-2">
+        <h3 className="text-sm sm:text-base font-semibold text-foreground">
           Upcoming Events
         </h3>
         <button
           onClick={() => setIsAdding(!isAdding)}
-          className="p-1.5 rounded-lg bg-green-500/20 text-green-400 hover:bg-green-500/30 transition-colors"
+          className="p-1.5 sm:p-2 rounded-lg bg-green-500/20 text-green-400 hover:bg-green-500/30 transition-colors flex-shrink-0"
         >
-          <Plus size={16} />
+          <Plus size={14} className="sm:w-4 sm:h-4" />
         </button>
       </div>
 
       {/* Add new event form */}
       {isAdding && (
-        <div className="mb-4 p-4 rounded-lg bg-secondary/50 space-y-3">
+        <div className="mb-3 sm:mb-4 p-2 sm:p-3 md:p-4 rounded-lg bg-secondary/50 space-y-2 sm:space-y-3">
           <input
             type="text"
             placeholder="Event title"
@@ -103,7 +103,7 @@ export default function UpcomingEvents() {
             onChange={(e) =>
               setNewEvent({ ...newEvent, title: e.target.value })
             }
-            className="w-full rounded-lg bg-secondary px-3 py-2 text-sm text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-green-500"
+            className="w-full rounded-lg bg-secondary px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-green-500"
           />
           <div className="grid grid-cols-2 gap-2">
             <input
@@ -112,7 +112,7 @@ export default function UpcomingEvents() {
               onChange={(e) =>
                 setNewEvent({ ...newEvent, date: e.target.value })
               }
-              className="rounded-lg bg-secondary px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-green-500"
+              className="rounded-lg bg-secondary px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-green-500"
             />
             <input
               type="time"
@@ -120,22 +120,22 @@ export default function UpcomingEvents() {
               onChange={(e) =>
                 setNewEvent({ ...newEvent, time: e.target.value })
               }
-              className="rounded-lg bg-secondary px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-green-500"
+              className="rounded-lg bg-secondary px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-green-500"
             />
           </div>
           <div className="flex gap-2">
             <button
               onClick={handleAddEvent}
-              className="flex-1 rounded-lg bg-green-500 text-white px-3 py-2 text-sm font-medium hover:bg-green-600 transition-colors"
+              className="flex-1 rounded-lg bg-green-500 text-white px-3 py-2 text-xs sm:text-sm font-medium hover:bg-green-600 transition-colors"
             >
-              Add Event
+              Add
             </button>
             <button
               onClick={() => {
                 setIsAdding(false);
                 setNewEvent({ title: "", date: "", time: "" });
               }}
-              className="flex-1 rounded-lg bg-secondary text-foreground px-3 py-2 text-sm font-medium hover:bg-secondary/80 transition-colors"
+              className="flex-1 rounded-lg bg-secondary text-foreground px-3 py-2 text-xs sm:text-sm font-medium hover:bg-secondary/80 transition-colors"
             >
               Cancel
             </button>
@@ -153,18 +153,18 @@ export default function UpcomingEvents() {
           </p>
         </div>
       ) : (
-        <div className="space-y-2">
+        <div className="space-y-1.5 sm:space-y-2">
           {sortedEvents.map((event) => (
             <div key={event.id}>
               {editingId === event.id ? (
-                <div className="p-3 rounded-lg bg-secondary/50 space-y-2">
+                <div className="p-2 sm:p-3 rounded-lg bg-secondary/50 space-y-2">
                   <input
                     type="text"
                     value={editEvent.title}
                     onChange={(e) =>
                       setEditEvent({ ...editEvent, title: e.target.value })
                     }
-                    className="w-full rounded-lg bg-secondary px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-green-500"
+                    className="w-full rounded-lg bg-secondary px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-green-500"
                   />
                   <div className="grid grid-cols-2 gap-2">
                     <input
@@ -173,7 +173,7 @@ export default function UpcomingEvents() {
                       onChange={(e) =>
                         setEditEvent({ ...editEvent, date: e.target.value })
                       }
-                      className="rounded-lg bg-secondary px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-green-500"
+                      className="rounded-lg bg-secondary px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-green-500"
                     />
                     <input
                       type="time"
@@ -181,47 +181,49 @@ export default function UpcomingEvents() {
                       onChange={(e) =>
                         setEditEvent({ ...editEvent, time: e.target.value })
                       }
-                      className="rounded-lg bg-secondary px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-green-500"
+                      className="rounded-lg bg-secondary px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-green-500"
                     />
                   </div>
                   <div className="flex gap-2">
                     <button
                       onClick={handleSaveEdit}
-                      className="flex-1 rounded-lg bg-green-500 text-white px-3 py-2 text-sm font-medium hover:bg-green-600 transition-colors"
+                      className="flex-1 rounded-lg bg-green-500 text-white px-3 py-2 text-xs sm:text-sm font-medium hover:bg-green-600 transition-colors"
                     >
                       Save
                     </button>
                     <button
                       onClick={handleCancelEdit}
-                      className="flex-1 rounded-lg bg-secondary text-foreground px-3 py-2 text-sm font-medium hover:bg-secondary/80 transition-colors"
+                      className="flex-1 rounded-lg bg-secondary text-foreground px-3 py-2 text-xs sm:text-sm font-medium hover:bg-secondary/80 transition-colors"
                     >
                       Cancel
                     </button>
                   </div>
                 </div>
               ) : (
-                <div className="flex items-center justify-between p-3 rounded-lg bg-secondary/50 hover:bg-secondary transition-colors group">
-                  <div className="flex-1">
-                    <p className="text-sm text-foreground font-medium">
+                <div className="flex items-center justify-between gap-2 p-2 sm:p-3 rounded-lg bg-secondary/50 hover:bg-secondary transition-colors group">
+                  <div className="flex-1 min-w-0">
+                    <p className="text-xs sm:text-sm text-foreground font-medium truncate">
                       {event.title}
                     </p>
                     <p className="text-xs text-muted-foreground">
-                      {new Date(event.date).toLocaleDateString()} at{" "}
-                      {event.time}
+                      {new Date(event.date).toLocaleDateString("en-US", {
+                        month: "short",
+                        day: "numeric"
+                      })} at {event.time}
                     </p>
                   </div>
-                  <div className="flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <div className="flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0">
                     <button
                       onClick={() => handleStartEdit(event)}
-                      className="p-1.5 rounded hover:bg-secondary"
+                      className="p-1 sm:p-1.5 rounded hover:bg-secondary"
                     >
-                      <Edit2 size={14} className="text-muted-foreground" />
+                      <Edit2 size={12} className="sm:w-3.5 sm:h-3.5 text-muted-foreground" />
                     </button>
                     <button
                       onClick={() => handleDeleteEvent(event.id)}
-                      className="p-1.5 rounded hover:bg-secondary"
+                      className="p-1 sm:p-1.5 rounded hover:bg-secondary"
                     >
-                      <Trash2 size={14} className="text-muted-foreground" />
+                      <Trash2 size={12} className="sm:w-3.5 sm:h-3.5 text-muted-foreground" />
                     </button>
                   </div>
                 </div>
