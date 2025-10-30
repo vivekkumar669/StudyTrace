@@ -4,13 +4,14 @@ import Dashboard from "./pages/Dashboard";
 import Schedule from "./pages/Schedule";
 import Analysis from "./pages/Analysis";
 import NotFound from "./pages/NotFound";
-import { Settings, RotateCcw, Moon, Sun } from "lucide-react";
+import { Settings, RotateCcw, Moon, Sun, Menu, X } from "lucide-react";
 
 function AppContent() {
   const [isDark, setIsDark] = useState(() => {
     // Initialize from document or default to true
     return document.documentElement.classList.contains("dark");
   });
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -39,21 +40,24 @@ function AppContent() {
   const activeTab = getActiveTab();
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground flex flex-col">
       {/* Header */}
-      <header className="border-b border-border bg-card/30 backdrop-blur-sm">
-        <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between">
+      <header className="border-b border-border bg-card/30 backdrop-blur-sm sticky top-0 z-50">
+        <div className="mx-auto w-full px-3 py-3 sm:px-6 sm:py-4 lg:px-8">
+          <div className="flex items-center justify-between gap-2 sm:gap-4">
             {/* Logo and title */}
             <div
-              className="flex items-center gap-3 cursor-pointer"
-              onClick={() => navigate("/")}
+              className="flex items-center gap-2 sm:gap-3 cursor-pointer flex-shrink-0"
+              onClick={() => {
+                navigate("/");
+                setMobileMenuOpen(false);
+              }}
             >
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-green-500">
-                <span className="text-lg font-bold text-white">✓</span>
+              <div className="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-lg bg-green-500 flex-shrink-0">
+                <span className="text-base sm:text-lg font-bold text-white">✓</span>
               </div>
-              <div>
-                <h1 className="text-xl font-bold text-foreground">
+              <div className="hidden sm:block">
+                <h1 className="text-lg sm:text-xl font-bold text-foreground leading-tight">
                   StudyTrace
                 </h1>
                 <p className="text-xs text-muted-foreground">
@@ -62,11 +66,14 @@ function AppContent() {
               </div>
             </div>
 
-            {/* Navigation tabs */}
-            <nav className="flex gap-2">
+            {/* Navigation tabs - hidden on mobile, shown on sm+ */}
+            <nav className="hidden sm:flex gap-1 md:gap-2 flex-1 justify-center">
               <button
-                onClick={() => navigate("/")}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                onClick={() => {
+                  navigate("/");
+                  setMobileMenuOpen(false);
+                }}
+                className={`px-3 md:px-4 py-2 rounded-lg text-xs md:text-sm font-medium transition-colors whitespace-nowrap ${
                   activeTab === "dashboard"
                     ? "bg-green-500 text-white"
                     : "text-muted-foreground hover:text-foreground"
@@ -75,8 +82,11 @@ function AppContent() {
                 Dashboard
               </button>
               <button
-                onClick={() => navigate("/schedule")}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                onClick={() => {
+                  navigate("/schedule");
+                  setMobileMenuOpen(false);
+                }}
+                className={`px-3 md:px-4 py-2 rounded-lg text-xs md:text-sm font-medium transition-colors whitespace-nowrap ${
                   activeTab === "schedule"
                     ? "bg-green-500 text-white"
                     : "text-muted-foreground hover:text-foreground"
@@ -85,8 +95,11 @@ function AppContent() {
                 Schedule
               </button>
               <button
-                onClick={() => navigate("/analysis")}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                onClick={() => {
+                  navigate("/analysis");
+                  setMobileMenuOpen(false);
+                }}
+                className={`px-3 md:px-4 py-2 rounded-lg text-xs md:text-sm font-medium transition-colors whitespace-nowrap ${
                   activeTab === "analysis"
                     ? "bg-green-500 text-white"
                     : "text-muted-foreground hover:text-foreground"
@@ -97,27 +110,85 @@ function AppContent() {
             </nav>
 
             {/* Action buttons */}
-            <div className="flex items-center gap-2">
-              <button className="px-4 py-2 rounded-lg bg-rose-500 text-white text-sm font-medium hover:bg-rose-600 transition-colors flex items-center gap-2">
-                <RotateCcw size={16} />
-                Reset Data
+            <div className="flex items-center gap-1 sm:gap-2 flex-shrink-0">
+              <button className="hidden sm:flex px-3 md:px-4 py-2 rounded-lg bg-rose-500 text-white text-xs md:text-sm font-medium hover:bg-rose-600 transition-colors items-center gap-1 md:gap-2 whitespace-nowrap">
+                <RotateCcw size={14} className="md:w-4 md:h-4" />
+                <span className="hidden md:inline">Reset Data</span>
+                <span className="md:hidden">Reset</span>
               </button>
-              <button className="p-2 rounded-lg hover:bg-secondary transition-colors">
-                <Settings size={20} />
+              <button className="p-2 rounded-lg hover:bg-secondary transition-colors flex-shrink-0">
+                <Settings size={18} />
               </button>
               <button
                 onClick={toggleTheme}
-                className="p-2 rounded-lg hover:bg-secondary transition-colors"
+                className="p-2 rounded-lg hover:bg-secondary transition-colors flex-shrink-0"
               >
-                {isDark ? <Sun size={20} /> : <Moon size={20} />}
+                {isDark ? <Sun size={18} /> : <Moon size={18} />}
+              </button>
+
+              {/* Mobile menu button */}
+              <button
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="sm:hidden p-2 rounded-lg hover:bg-secondary transition-colors flex-shrink-0"
+              >
+                {mobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
               </button>
             </div>
           </div>
+
+          {/* Mobile menu */}
+          {mobileMenuOpen && (
+            <div className="sm:hidden mt-3 pt-3 border-t border-border space-y-2">
+              <button
+                onClick={() => {
+                  navigate("/");
+                  setMobileMenuOpen(false);
+                }}
+                className={`w-full px-4 py-3 rounded-lg text-sm font-medium transition-colors text-left ${
+                  activeTab === "dashboard"
+                    ? "bg-green-500 text-white"
+                    : "text-muted-foreground hover:text-foreground hover:bg-secondary"
+                }`}
+              >
+                Dashboard
+              </button>
+              <button
+                onClick={() => {
+                  navigate("/schedule");
+                  setMobileMenuOpen(false);
+                }}
+                className={`w-full px-4 py-3 rounded-lg text-sm font-medium transition-colors text-left ${
+                  activeTab === "schedule"
+                    ? "bg-green-500 text-white"
+                    : "text-muted-foreground hover:text-foreground hover:bg-secondary"
+                }`}
+              >
+                Schedule
+              </button>
+              <button
+                onClick={() => {
+                  navigate("/analysis");
+                  setMobileMenuOpen(false);
+                }}
+                className={`w-full px-4 py-3 rounded-lg text-sm font-medium transition-colors text-left ${
+                  activeTab === "analysis"
+                    ? "bg-green-500 text-white"
+                    : "text-muted-foreground hover:text-foreground hover:bg-secondary"
+                }`}
+              >
+                Analysis
+              </button>
+              <button className="w-full px-4 py-3 rounded-lg bg-rose-500 text-white text-sm font-medium hover:bg-rose-600 transition-colors flex items-center gap-2">
+                <RotateCcw size={16} />
+                Reset Data
+              </button>
+            </div>
+          )}
         </div>
       </header>
 
       {/* Main content */}
-      <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+      <main className="flex-1 mx-auto w-full max-w-7xl px-3 py-6 sm:px-6 sm:py-8 lg:px-8">
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/dashboard" element={<Dashboard />} />
