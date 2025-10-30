@@ -64,15 +64,15 @@ export default function TodaysActivities({ type }: TodaysActivitiesProps) {
   const totalCount = activities.length;
 
   return (
-    <div className="rounded-lg border border-border bg-card p-6">
-      <div className="mb-4 flex items-center justify-between">
-        <h3 className="text-base font-semibold text-foreground">{title}</h3>
-        <span className="text-xs text-muted-foreground">
+    <div className="rounded-lg border border-border bg-card p-3 sm:p-4 md:p-6">
+      <div className="mb-3 sm:mb-4 flex items-center justify-between gap-2">
+        <h3 className="text-sm sm:text-base font-semibold text-foreground truncate">{title}</h3>
+        <span className="text-xs text-muted-foreground whitespace-nowrap">
           {completedCount}/{totalCount}
         </span>
       </div>
 
-      <div className="space-y-2 mb-4">
+      <div className="space-y-2 mb-3 sm:mb-4">
         {activities.length === 0 ? (
           <p className="text-sm text-muted-foreground text-center py-4">
             No activities yet
@@ -81,20 +81,20 @@ export default function TodaysActivities({ type }: TodaysActivitiesProps) {
           activities.map((activity) => (
             <div
               key={activity.id}
-              className="flex items-center gap-3 p-3 rounded-lg bg-secondary/50 hover:bg-secondary transition-colors group"
+              className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 rounded-lg bg-secondary/50 hover:bg-secondary transition-colors group"
             >
               <button
                 onClick={() => handleToggleActivity(activity.id)}
-                className={`flex-shrink-0 w-5 h-5 rounded border-2 flex items-center justify-center transition-colors ${
+                className={`flex-shrink-0 w-4 h-4 sm:w-5 sm:h-5 rounded border-2 flex items-center justify-center transition-colors ${
                   activity.completed
                     ? "bg-green-500 border-green-500"
                     : "border-muted-foreground hover:border-green-500"
                 }`}
               >
-                {activity.completed && <Check size={14} className="text-white" />}
+                {activity.completed && <Check size={12} className="sm:w-3.5 sm:h-3.5 text-white" />}
               </button>
               <span
-                className={`flex-1 text-sm transition-colors ${
+                className={`flex-1 text-xs sm:text-sm transition-colors truncate ${
                   activity.completed
                     ? "text-muted-foreground line-through"
                     : "text-foreground"
@@ -104,9 +104,9 @@ export default function TodaysActivities({ type }: TodaysActivitiesProps) {
               </span>
               <button
                 onClick={() => handleRemoveActivity(activity.id)}
-                className="p-1 opacity-0 group-hover:opacity-100 transition-opacity hover:bg-secondary rounded"
+                className="p-1 opacity-0 group-hover:opacity-100 transition-opacity hover:bg-secondary rounded flex-shrink-0"
               >
-                <Trash2 size={14} className="text-muted-foreground" />
+                <Trash2 size={12} className="sm:w-3.5 sm:h-3.5 text-muted-foreground" />
               </button>
             </div>
           ))
@@ -120,14 +120,14 @@ export default function TodaysActivities({ type }: TodaysActivitiesProps) {
           value={newActivity}
           onChange={(e) => setNewActivity(e.target.value)}
           onKeyPress={(e) => e.key === "Enter" && handleAddActivity()}
-          placeholder="Add new activity..."
-          className="flex-1 rounded-lg bg-secondary px-3 py-2 text-sm text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-green-500"
+          placeholder="Add activity..."
+          className="flex-1 rounded-lg bg-secondary px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-green-500"
         />
         <button
           onClick={handleAddActivity}
-          className="p-2 rounded-lg bg-green-500/20 text-green-400 hover:bg-green-500/30 transition-colors"
+          className="p-1.5 sm:p-2 rounded-lg bg-green-500/20 text-green-400 hover:bg-green-500/30 transition-colors flex-shrink-0"
         >
-          <Plus size={16} />
+          <Plus size={14} className="sm:w-4 sm:h-4" />
         </button>
       </div>
     </div>
